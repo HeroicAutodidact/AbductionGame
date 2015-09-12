@@ -5,7 +5,7 @@ using System;
 public class MouseMove2D : MonoBehaviour {
  
     private Vector3 mousePosition;
-    public float moveSpeed = 1.0f;
+    public float moveSpeed = 0.3f;
     private Vector2 prevPos = new Vector2(0,0);
     private Vector2 velocity = new Vector2(0,0);
     private Vector2 lastTangent; 
@@ -31,13 +31,13 @@ public class MouseMove2D : MonoBehaviour {
 
         fromLastTangentV = (Vector2)transform.position - lastTangent;
         zRotationRad = (float)Math.Atan(fromLastTangentV.x/fromLastTangentV.y);
-        zRotationDeg = 180f - zRotationRad * 180 / (float)Math.PI;
+        zRotationDeg = -1 * zRotationRad * 180 / (float)Math.PI;
         transform.rotation = Quaternion.Euler(new Vector3(0f,0f,zRotationDeg));
-        i += 1;
-        if (i==40){
-            Debug.Log(zRotationDeg);
-            Debug.Log(transform.rotation);
-            i=0;
-        }
+        // i += 1;
+        // if (i==40){
+        //     Debug.Log(zRotationDeg);
+        //     Debug.Log(transform.rotation);
+        //     i=0;
+        // }
     }
 }
